@@ -93,12 +93,13 @@
     </section>
     <section id="contact" class="contact reveal">
       <h2>お問い合わせ</h2>
-      <form>
-        <input type="text" placeholder="お名前" required>
-        <input type="email" placeholder="メールアドレス" required>
-        <textarea placeholder="お問い合わせ内容" required></textarea>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="お名前" required>
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <textarea name="message" placeholder="お問い合わせ内容" required></textarea>
         <button type="submit">送信</button>
       </form>
+      <div id="contactMessage" class="contact-message"></div>
     </section>
   </main>
   <footer>
@@ -352,6 +353,63 @@
    // ドロップダウン外クリックで閉じる
    document.addEventListener('click', () => {
      langDropdown.classList.remove('show');
+   });
+
+   // お問い合わせフォームの送信処理
+   document.getElementById('contactForm').addEventListener('submit', async (e) => {
+     e.preventDefault();
+     
+     const formData = new FormData(e.target);
+     const data = {
+       name: formData.get('name'),
+       email: formData.get('email'),
+       message: formData.get('message')
+     };
+     
+     try {
+       const response = await fetch('/api/contact', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(data)
+       });
+       
+       const result = await response.json();
+       const messageDiv = document.getElementById('contactMessage');
+       
+       if (result.success) {
+         messageDiv.textContent = result.message;
+         messageDiv.className = 'contact-message success';
+         e.target.reset();
+       } else {
+         messageDiv.textContent = result.message || 'エラーが発生しました';
+         messageDiv.className = 'contact-message error';
+       }
+     } catch (error) {
+       const messageDiv = document.getElementById('contactMessage');
+       messageDiv.textContent = '通信エラーが発生しました';
+       messageDiv.className = 'contact-message error';
+     }
+   });
+
+   // ダウンロードボタンのクリック追跡
+   document.querySelectorAll('.download-btn').forEach(btn => {
+     btn.addEventListener('click', async () => {
+       const fileName = btn.getAttribute('download') || btn.textContent;
+       
+       try {
+         await fetch('/api/download', {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify({ file_name: fileName })
+         });
+       } catch (error) {
+         console.log('Download tracking failed:', error);
+       }
+     });
    });
   </script>
 </body>
