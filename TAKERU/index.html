@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TakeSoft | ソフトウェア・システム開発</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="logo"><img src="TakeSoft.png" alt="TakeSoftロゴ" class="logo-img"></div>
+      <nav>
+        <ul>
+          <li><a href="#about">会社紹介</a></li>
+          <li><a href="#services">サービス</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <button class="lang-btn" id="langBtn">🌐 日本語</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <div class="lang-option" data-lang="ja">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="en">🇺🇸 English</div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero reveal">
+      <h1>ソフトウェアとシステム開発のTakeSoft</h1>
+      <p>最先端の技術で、ビジネスを加速させるソリューションを提供します。</p>
+      <a href="#contact" class="cta-btn">お問い合わせ</a>
+    </section>
+    <section id="about" class="about reveal">
+      <h2>会社紹介</h2>
+      <p>TakeSoft(タケソフト)は、ソフトウェアの開発を中心に、お客様の課題解決をサポートするIT企業です。</p>
+    </section>
+    <section id="pickup" class="pickup reveal">
+      <h2>注目</h2>
+      <div class="pickup-slider">
+        <img src="pickup1.png" alt="注目画像1" class="pickup-img active">
+        <img src="pickup2.png" alt="注目画像2" class="pickup-img">
+      </div>
+      <div class="pickup-indicators">
+        <span class="indicator active" data-index="0"></span>
+        <span class="indicator" data-index="1"></span>
+      </div>
+    </section>
+    <section id="services" class="services reveal">
+      <h2>サービス内容</h2>
+      <div class="service-block">
+        <div class="free-badge">Free</div>
+        <h3>Time Gate</h3>
+        <p><strong>最も簡単で高速なエミュレーターソフトウェア</strong></p>
+        <ul>
+          <li>インストール後すぐに使えるシンプル設計</li>
+          <li>業界最速クラスのエミュレーション速度</li>
+          <li>多様なプラットフォームに対応</li>
+          <li>直感的なユーザーインターフェース</li>
+        </ul>
+        <p><strong>料金：</strong>無料</p>
+        <a href="TimeGate.zip" class="download-btn" download>ダウンロード</a>
+        <a href="TimeGate_manual.pdf" class="download-btn pdf" download>PDFダウンロード</a>
+        <div class="download-note">Windows 64Bit対応</div>
+        <div class="disclaimer">Time Gateは個人で作成したソフトウェアです。バグやエラー、クラッシュなどが発生する恐れがあります。</div>
+        <div class="usage-toggle">
+          <button class="toggle-btn" onclick="toggleUsage()">利用方法を表示 ▼</button>
+          <div class="usage-content">
+            <div class="usage-steps">
+              <div class="step">
+                <h4>1. ダウンロード</h4>
+                <p>上記の「ダウンロード」ボタンからTimeGate.zipをダウンロードしてください。</p>
+              </div>
+              <div class="step">
+                <h4>2. 解凍</h4>
+                <p>ダウンロードしたzipファイルを任意のフォルダに解凍してください。</p>
+              </div>
+              <div class="step">
+                <h4>3. 起動</h4>
+                <p>解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。</p>
+              </div>
+              <div class="step">
+                <h4>4. 利用開始</h4>
+                <p>直感的なインターフェースで、すぐにエミュレーションを開始できます。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 他のサービスがあればここに追加可能 -->
+    </section>
+    <section id="contact" class="contact reveal">
+      <h2>お問い合わせ</h2>
+      <form>
+        <input type="text" placeholder="お名前" required>
+        <input type="email" placeholder="メールアドレス" required>
+        <textarea placeholder="お問い合わせ内容" required></textarea>
+        <button type="submit">送信</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <small>&copy; 2024 TakeSoft. All rights reserved.</small>
+  </footer>
+  <script>
+    // Intersection Observerでrevealクラスにアニメーションを適用
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+    // 注目欄スライドショー
+    const pickupImgs = document.querySelectorAll('.pickup-img');
+    const indicators = document.querySelectorAll('.indicator');
+    let pickupIdx = 0;
+    let slideInterval = setInterval(() => {
+      pickupImgs.forEach((img, i) => img.classList.toggle('active', i === pickupIdx));
+      indicators.forEach((ind, i) => ind.classList.toggle('active', i === pickupIdx));
+      pickupIdx = (pickupIdx + 1) % pickupImgs.length;
+    }, 5000);
+    
+    // インジケータークリック時の画像切り替え
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        pickupIdx = index;
+        pickupImgs.forEach((img, i) => img.classList.toggle('active', i === pickupIdx));
+        indicators.forEach((ind, i) => ind.classList.toggle('active', i === pickupIdx));
+      });
+    });
+   
+   // 利用方法の折りたたみ機能
+   function toggleUsage() {
+     const content = document.querySelector('.usage-content');
+     const btn = document.querySelector('.toggle-btn');
+     if (content.classList.contains('show')) {
+       content.classList.remove('show');
+       btn.textContent = '利用方法を表示 ▼';
+     } else {
+       content.classList.add('show');
+       btn.textContent = '利用方法を隠す ▲';
+     }
+   }
+
+   // ページロード時のアニメーション
+   window.addEventListener('DOMContentLoaded', () => {
+     // 背景のフェードイン
+     document.body.classList.add('loaded');
+     
+     // ヘッダーのスライドインアニメーション
+     setTimeout(() => {
+       document.querySelector('header').classList.add('header-slidein');
+     }, 100);
+   });
+
+   // ページロード時に必ず一番上にスクロール
+   window.addEventListener('beforeunload', () => {
+     window.scrollTo(0, 0);
+   });
+   window.addEventListener('DOMContentLoaded', () => {
+     window.scrollTo(0, 0);
+   });
+   
+   // 言語選択ドロップダウン
+   const langBtn = document.getElementById('langBtn');
+   const langDropdown = document.getElementById('langDropdown');
+   const langOptions = document.querySelectorAll('.lang-option');
+   
+        // 言語テキストの定義
+     const translations = {
+       ja: {
+         free_badge: "Free",
+         hero_title: "ソフトウェアとシステム開発のTakeSoft",
+       hero_subtitle: "最先端の技術で、ビジネスを加速させるソリューションを提供します。",
+       contact_btn: "お問い合わせ",
+       about_title: "会社紹介",
+       about_text: "TakeSoft(タケソフト)は、ソフトウェアの開発を中心に、お客様の課題解決をサポートするIT企業です。",
+       pickup_title: "注目",
+       services_title: "サービス内容",
+       timegate_title: "Time Gate",
+       timegate_subtitle: "最も簡単で高速なエミュレーターソフトウェア",
+       feature1: "インストール後すぐに使えるシンプル設計",
+       feature2: "業界最速クラスのエミュレーション速度",
+       feature3: "多様なプラットフォームに対応",
+       feature4: "直感的なユーザーインターフェース",
+       price: "料金：",
+       free: "無料",
+       download: "ダウンロード",
+       pdf_download: "PDFダウンロード",
+       windows_support: "Windows 64Bit対応",
+       disclaimer: "Time Gateは個人で作成したソフトウェアです。バグやエラー、クラッシュなどが発生する恐れがあります。",
+       usage_toggle: "利用方法を表示 ▼",
+       usage_hide: "利用方法を隠す ▲",
+       step1_title: "1. ダウンロード",
+       step1_text: "上記の「ダウンロード」ボタンからTimeGate.zipをダウンロードしてください。",
+       step2_title: "2. 解凍",
+       step2_text: "ダウンロードしたzipファイルを任意のフォルダに解凍してください。",
+       step3_title: "3. 起動",
+       step3_text: "解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。",
+       step4_title: "4. 利用開始",
+       step4_text: "直感的なインターフェースで、すぐにエミュレーションを開始できます。",
+       contact_title: "お問い合わせ",
+       name_placeholder: "お名前",
+       email_placeholder: "メールアドレス",
+       message_placeholder: "お問い合わせ内容",
+       send_btn: "送信",
+       nav_about: "会社紹介",
+       nav_services: "サービス",
+       nav_contact: "お問い合わせ"
+     },
+     en: {
+       free_badge: "Free",
+       hero_title: "TakeSoft - Software & System Development",
+       hero_subtitle: "Accelerating business with cutting-edge technology solutions.",
+       contact_btn: "Contact Us",
+       about_title: "About Us",
+       about_text: "TakeSoft is an IT company that supports customer problem-solving, focusing on software development.",
+       pickup_title: "Featured",
+       services_title: "Services",
+       timegate_title: "Time Gate",
+       timegate_subtitle: "The Easiest and Fastest Emulator Software",
+       feature1: "Simple design ready to use after installation",
+       feature2: "Industry-leading emulation speed",
+       feature3: "Supports multiple platforms",
+       feature4: "Intuitive user interface",
+       price: "Price: ",
+       free: "Free",
+       download: "Download",
+       pdf_download: "PDF Download",
+       windows_support: "Windows 64Bit Supported",
+       disclaimer: "Time Gate is personally developed software. Bugs, errors, and crashes may occur.",
+       usage_toggle: "Show Usage ▼",
+       usage_hide: "Hide Usage ▲",
+       step1_title: "1. Download",
+       step1_text: "Download TimeGate.zip from the \"Download\" button above.",
+       step2_title: "2. Extract",
+       step2_text: "Extract the downloaded zip file to any folder.",
+       step3_title: "3. Launch",
+       step3_text: "Double-click the executable file in the extracted folder to launch.",
+       step4_title: "4. Start Using",
+       step4_text: "Start emulation immediately with an intuitive interface.",
+       contact_title: "Contact",
+       name_placeholder: "Name",
+       email_placeholder: "Email Address",
+       message_placeholder: "Message",
+       send_btn: "Send",
+       nav_about: "About",
+       nav_services: "Services",
+       nav_contact: "Contact"
+     }
+   };
+   
+   // 言語切り替え関数
+   function changeLanguage(lang) {
+     const t = translations[lang];
+     
+     // ナビゲーション
+     document.querySelector('nav a[href="#about"]').textContent = t.nav_about;
+     document.querySelector('nav a[href="#services"]').textContent = t.nav_services;
+     document.querySelector('nav a[href="#contact"]').textContent = t.nav_contact;
+     
+     // ヒーローセクション
+     document.querySelector('.hero h1').textContent = t.hero_title;
+     document.querySelector('.hero p').textContent = t.hero_subtitle;
+     document.querySelector('.cta-btn').textContent = t.contact_btn;
+     
+     // 会社紹介
+     document.querySelector('#about h2').textContent = t.about_title;
+     document.querySelector('#about p').textContent = t.about_text;
+     
+     // 注目
+     document.querySelector('#pickup h2').textContent = t.pickup_title;
+     
+     // サービス内容
+     document.querySelector('#services h2').textContent = t.services_title;
+     document.querySelector('.free-badge').textContent = t.free_badge;
+     document.querySelector('.service-block h3').textContent = t.timegate_title;
+     document.querySelector('.service-block p strong').textContent = t.timegate_subtitle;
+     
+     // 特徴リスト
+     const features = document.querySelectorAll('.service-block ul li');
+     features[0].textContent = t.feature1;
+     features[1].textContent = t.feature2;
+     features[2].textContent = t.feature3;
+     features[3].textContent = t.feature4;
+     
+     // 料金
+     document.querySelector('.service-block p:contains("料金")').innerHTML = `<strong>${t.price}</strong>${t.free}`;
+     
+     // ボタン
+     document.querySelector('.download-btn').textContent = t.download;
+     document.querySelector('.download-btn.pdf').textContent = t.pdf_download;
+     
+     // その他
+     document.querySelector('.download-note').textContent = t.windows_support;
+     document.querySelector('.disclaimer').textContent = t.disclaimer;
+     document.querySelector('.toggle-btn').textContent = t.usage_toggle;
+     
+     // 利用方法ステップ
+     const steps = document.querySelectorAll('.step h4');
+     const stepTexts = document.querySelectorAll('.step p');
+     steps[0].textContent = t.step1_title;
+     steps[1].textContent = t.step2_title;
+     steps[2].textContent = t.step3_title;
+     steps[3].textContent = t.step4_title;
+     stepTexts[0].textContent = t.step1_text;
+     stepTexts[1].textContent = t.step2_text;
+     stepTexts[2].textContent = t.step3_text;
+     stepTexts[3].textContent = t.step4_text;
+     
+     // お問い合わせ
+     document.querySelector('#contact h2').textContent = t.contact_title;
+     document.querySelector('#contact input[type="text"]').placeholder = t.name_placeholder;
+     document.querySelector('#contact input[type="email"]').placeholder = t.email_placeholder;
+     document.querySelector('#contact textarea').placeholder = t.message_placeholder;
+     document.querySelector('#contact button').textContent = t.send_btn;
+   }
+   
+   langBtn.addEventListener('click', (e) => {
+     e.stopPropagation();
+     langDropdown.classList.toggle('show');
+   });
+   
+   // 言語オプションクリック時の処理
+   langOptions.forEach(option => {
+     option.addEventListener('click', () => {
+       const lang = option.getAttribute('data-lang');
+       const text = option.textContent;
+       
+       // ボタンテキストを更新
+       langBtn.textContent = text.split(' ')[0] + ' ' + text.split(' ')[1];
+       
+       // アクティブ状態を更新
+       langOptions.forEach(opt => opt.classList.remove('active'));
+       option.classList.add('active');
+       
+       // 言語切り替え実行
+       changeLanguage(lang);
+       
+       // ドロップダウンを閉じる
+       langDropdown.classList.remove('show');
+     });
+   });
+   
+   // ドロップダウン外クリックで閉じる
+   document.addEventListener('click', () => {
+     langDropdown.classList.remove('show');
+   });
+  </script>
+</body>
+</html> 
