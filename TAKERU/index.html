@@ -6,104 +6,268 @@
   <title>TakeSoft | ソフトウェア・システム開発</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="header-left">
-      <div class="logo"><img src="TakeSoft.png" alt="TakeSoftロゴ" class="logo-img"></div>
-      <nav>
-        <ul>
-          <li><a href="#about">会社紹介</a></li>
-          <li><a href="#services">サービス</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-      </nav>
-      <button class="lang-btn" id="langBtn">🌐 日本語</button>
-      <div class="lang-dropdown" id="langDropdown">
-        <div class="lang-option" data-lang="ja">🇯🇵 日本語</div>
-        <div class="lang-option" data-lang="en">🇺🇸 English</div>
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">
+          <img src="TakeSoft2.png" alt="TakeSoftロゴ" class="logo-img">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#about">会社紹介</a></li>
+            <li><a href="#services">サービス</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header-right">
+        <button class="lang-btn" id="langBtn">🌐 日本語</button>
+        <div class="lang-dropdown" id="langDropdown">
+          <div class="lang-option" data-lang="ja">🇯🇵 日本語</div>
+          <div class="lang-option" data-lang="en">🇺🇸 English</div>
+        </div>
       </div>
     </div>
   </header>
+
   <main>
+    <!-- ヒーローセクション -->
     <section class="hero reveal">
-      <h1>ソフトウェアとシステム開発のTakeSoft</h1>
-      <p>最先端の技術で、ビジネスを加速させるソリューションを提供します。</p>
-      <a href="#contact" class="cta-btn">お問い合わせ</a>
+      <div class="hero-content">
+        <h1>ソフトウェアとシステム開発の<br><span class="highlight">TakeSoft</span></h1>
+        <p class="hero-subtitle">最先端の技術で、ビジネスを加速させるソリューションを提供します。</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="cta-btn primary">お問い合わせ</a>
+          <a href="#services" class="cta-btn secondary">サービスを見る</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-placeholder">
+          <div class="floating-card card1">
+            <div class="card-icon">⚡</div>
+            <div class="card-text">高速</div>
+          </div>
+          <div class="floating-card card2">
+            <div class="card-icon">🛡️</div>
+            <div class="card-text">安全</div>
+          </div>
+          <div class="floating-card card3">
+            <div class="card-icon">🚀</div>
+            <div class="card-text">革新</div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- 会社紹介セクション -->
+    <svg class="section-divider" viewBox="0 0 1440 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 Q720,60 1440,30 L1440,60 L0,60 Z" fill="#faf9f8"/></svg>
     <section id="about" class="about reveal">
-      <h2>会社紹介</h2>
-      <p>TakeSoft(タケソフト)は、ソフトウェアの開発を中心に、お客様の課題解決をサポートするIT企業です。</p>
+      <div class="section-container">
+        <div class="section-header">
+          <h2>会社紹介</h2>
+          <p class="section-subtitle">お客様の成功を支えるITパートナー</p>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>TakeSoft(タケソフト)は、ソフトウェアの開発を中心に、お客様の課題解決をサポートするIT企業です。</p>
+            <p>最新技術と豊富な経験を活かし、お客様のビジネス成長を加速させるソリューションを提供しています。</p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">100+</div>
+              <div class="stat-label">プロジェクト実績</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">お客様企業</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">5年</div>
+              <div class="stat-label">業界経験</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- 注目セクション -->
+    <svg class="section-divider" viewBox="0 0 1440 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 Q720,0 1440,30 L1440,60 L0,60 Z" fill="#fff"/></svg>
     <section id="pickup" class="pickup reveal">
-      <h2>注目</h2>
-      <div class="pickup-slider">
-        <img src="pickup1.png" alt="注目画像1" class="pickup-img active">
-        <img src="pickup2.png" alt="注目画像2" class="pickup-img">
-      </div>
-      <div class="pickup-indicators">
-        <span class="indicator active" data-index="0"></span>
-        <span class="indicator" data-index="1"></span>
+      <div class="section-container">
+        <div class="section-header">
+          <h2>注目</h2>
+          <p class="section-subtitle">最新のプロジェクトとニュース</p>
+        </div>
+        <div class="pickup-slider">
+          <img src="pickup1.png" alt="注目画像1" class="pickup-img active">
+          <img src="pickup(2).png" alt="注目画像2" class="pickup-img">
+        </div>
+        <div class="pickup-indicators">
+          <span class="indicator active" data-index="0"></span>
+          <span class="indicator" data-index="1"></span>
+        </div>
       </div>
     </section>
+
+    <!-- サービスセクション -->
+    <svg class="section-divider" viewBox="0 0 1440 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 Q720,60 1440,30 L1440,60 L0,60 Z" fill="#faf9f8"/></svg>
     <section id="services" class="services reveal">
-      <h2>サービス内容</h2>
-      <div class="service-block">
-        <div class="free-badge">Free</div>
-        <h3>Time Gate</h3>
-        <p><strong>最も簡単で高速なエミュレーターソフトウェア</strong></p>
-        <ul>
-          <li>インストール後すぐに使えるシンプル設計</li>
-          <li>業界最速クラスのエミュレーション速度</li>
-          <li>多様なプラットフォームに対応</li>
-          <li>直感的なユーザーインターフェース</li>
-        </ul>
-        <p><strong>料金：</strong>無料</p>
-        <a href="TimeGate.zip" class="download-btn" download>ダウンロード</a>
-        <a href="TimeGate_manual.pdf" class="download-btn pdf" download>PDFダウンロード</a>
-        <div class="download-note">Windows 64Bit対応</div>
-        <div class="disclaimer">Time Gateは個人で作成したソフトウェアです。バグやエラー、クラッシュなどが発生する恐れがあります。</div>
-        <div class="usage-toggle">
-          <button class="toggle-btn" onclick="toggleUsage()">利用方法を表示 ▼</button>
-          <div class="usage-content">
-            <div class="usage-steps">
-              <div class="step">
-                <h4>1. ダウンロード</h4>
-                <p>上記の「ダウンロード」ボタンからTimeGate.zipをダウンロードしてください。</p>
+      <div class="section-container">
+        <div class="section-header">
+          <h2>サービス内容</h2>
+          <p class="section-subtitle">お客様のニーズに合わせた最適なソリューション</p>
+        </div>
+        <div class="service-block">
+          <div class="service-header">
+            <div class="free-badge">Free</div>
+            <h3>Time Gate</h3>
+            <p class="service-subtitle"><strong>最も簡単で高速なエミュレーターソフトウェア</strong></p>
+          </div>
+          <div class="service-features">
+            <div class="feature-grid">
+              <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">インストール後すぐに使えるシンプル設計</div>
               </div>
-              <div class="step">
-                <h4>2. 解凍</h4>
-                <p>ダウンロードしたzipファイルを任意のフォルダに解凍してください。</p>
+              <div class="feature-item">
+                <div class="feature-icon">🚀</div>
+                <div class="feature-text">業界最速クラスのエミュレーション速度</div>
               </div>
-              <div class="step">
-                <h4>3. 起動</h4>
-                <p>解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。</p>
+              <div class="feature-item">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-text">多様なプラットフォームに対応</div>
               </div>
-              <div class="step">
-                <h4>4. 利用開始</h4>
-                <p>直感的なインターフェースで、すぐにエミュレーションを開始できます。</p>
+              <div class="feature-item">
+                <div class="feature-icon">👆</div>
+                <div class="feature-text">直感的なユーザーインターフェース</div>
+              </div>
+            </div>
+          </div>
+          <div class="service-pricing">
+            <div class="price-info">
+              <span class="price-label">料金：</span>
+              <span class="price-value">無料</span>
+            </div>
+          </div>
+          <div class="service-actions">
+            <a href="TimeGate.zip" class="download-btn primary" download>ダウンロード</a>
+            <a href="TimeGate_manual.pdf" class="download-btn secondary" download>PDFダウンロード</a>
+          </div>
+          <div class="service-details">
+            <div class="download-note">Windows 64Bit対応</div>
+            <div class="disclaimer">Time Gateは個人で作成したソフトウェアです。バグやエラー、クラッシュなどが発生する恐れがあります。</div>
+          </div>
+          <div class="usage-toggle">
+            <button class="toggle-btn" onclick="toggleUsage()">利用方法を表示 ▼</button>
+            <div class="usage-content">
+              <div class="usage-steps">
+                <div class="step">
+                  <div class="step-number">1</div>
+                  <h4>ダウンロード</h4>
+                  <p>上記の「ダウンロード」ボタンからTimeGate.zipをダウンロードしてください。</p>
+                </div>
+                <div class="step">
+                  <div class="step-number">2</div>
+                  <h4>解凍</h4>
+                  <p>ダウンロードしたzipファイルを任意のフォルダに解凍してください。</p>
+                </div>
+                <div class="step">
+                  <div class="step-number">3</div>
+                  <h4>起動</h4>
+                  <p>解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。</p>
+                </div>
+                <div class="step">
+                  <div class="step-number">4</div>
+                  <h4>利用開始</h4>
+                  <p>直感的なインターフェースで、すぐにエミュレーションを開始できます。</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- 他のサービスがあればここに追加可能 -->
     </section>
+
+    <!-- お問い合わせセクション -->
+    <svg class="section-divider" viewBox="0 0 1440 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 Q720,0 1440,30 L1440,60 L0,60 Z" fill="#fff"/></svg>
     <section id="contact" class="contact reveal">
-      <h2>お問い合わせ</h2>
-      <form id="contactForm">
-        <input type="text" name="name" placeholder="お名前" required>
-        <input type="email" name="email" placeholder="メールアドレス" required>
-        <textarea name="message" placeholder="お問い合わせ内容" required></textarea>
-        <button type="submit">送信</button>
-      </form>
-      <div id="contactMessage" class="contact-message"></div>
+      <div class="section-container">
+        <div class="section-header">
+          <h2>お問い合わせ</h2>
+          <p class="section-subtitle">プロジェクトのご相談やお見積もりはお気軽に</p>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div class="contact-text">
+                <h4>メール</h4>
+                <p>info@takesoft.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-text">
+                <h4>電話</h4>
+                <p>03-1234-5678</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-text">
+                <h4>所在地</h4>
+                <p>東京都渋谷区</p>
+              </div>
+            </div>
+          </div>
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="お名前" required>
+              <input type="email" name="email" placeholder="メールアドレス" required>
+            </div>
+            <textarea name="message" placeholder="お問い合わせ内容" required></textarea>
+            <button type="submit">送信</button>
+          </form>
+        </div>
+        <div id="contactMessage" class="contact-message"></div>
+      </div>
     </section>
   </main>
+
   <footer>
-    <small>&copy; 2024 TakeSoft. All rights reserved.</small>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="TakeSoft.png" alt="TakeSoftロゴ" class="footer-logo-img">
+          </div>
+          <p>最先端の技術で、ビジネスを加速させるソリューションを提供します。</p>
+        </div>
+        <div class="footer-section">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="#services">ソフトウェア開発</a></li>
+            <li><a href="#services">システム開発</a></li>
+            <li><a href="#services">技術コンサルティング</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="#about">会社紹介</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+            <li><a href="#contact">採用情報</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>&copy; 2024 TakeSoft. All rights reserved.</small>
+      </div>
+    </div>
   </footer>
   <script>
     // Intersection Observerでrevealクラスにアニメーションを適用
@@ -152,22 +316,23 @@
 
    // ページロード時のアニメーション
    window.addEventListener('DOMContentLoaded', () => {
+     // 必ず一番上にスクロール
+     window.scrollTo(0, 0);
      // 背景のフェードイン
      document.body.classList.add('loaded');
-     
      // ヘッダーのスライドインアニメーション
      setTimeout(() => {
        document.querySelector('header').classList.add('header-slidein');
      }, 100);
    });
 
-   // ページロード時に必ず一番上にスクロール
-   window.addEventListener('beforeunload', () => {
+   // ページの再表示や戻る・進む時も必ず一番上に
+   window.addEventListener('pageshow', () => {
      window.scrollTo(0, 0);
    });
-   window.addEventListener('DOMContentLoaded', () => {
-     window.scrollTo(0, 0);
-   });
+   if ('scrollRestoration' in history) {
+     history.scrollRestoration = 'manual';
+   }
    
    // 言語選択ドロップダウン
    const langBtn = document.getElementById('langBtn');
@@ -279,6 +444,16 @@
      // 注目
      document.querySelector('#pickup h2').textContent = t.pickup_title;
      
+     // pickup画像alt属性
+     const pickupImgs = document.querySelectorAll('.pickup-img');
+     if (lang === 'en') {
+       if (pickupImgs[0]) pickupImgs[0].alt = 'Featured Image 1';
+       if (pickupImgs[1]) pickupImgs[1].alt = 'Featured Image 2';
+     } else {
+       if (pickupImgs[0]) pickupImgs[0].alt = '注目画像1';
+       if (pickupImgs[1]) pickupImgs[1].alt = '注目画像2';
+     }
+     
      // サービス内容
      document.querySelector('#services h2').textContent = t.services_title;
      document.querySelector('.free-badge').textContent = t.free_badge;
@@ -287,17 +462,23 @@
      
      // 特徴リスト
      const features = document.querySelectorAll('.service-block ul li');
-     features[0].textContent = t.feature1;
-     features[1].textContent = t.feature2;
-     features[2].textContent = t.feature3;
-     features[3].textContent = t.feature4;
+     if (features.length >= 4) {
+       features[0].textContent = t.feature1;
+       features[1].textContent = t.feature2;
+       features[2].textContent = t.feature3;
+       features[3].textContent = t.feature4;
+     }
      
      // 料金
-     document.querySelector('.service-block p:contains("料金")').innerHTML = `<strong>${t.price}</strong>${t.free}`;
+     const priceP = document.querySelector('.service-block p');
+     if (priceP && priceP.textContent.includes('料金')) {
+       priceP.innerHTML = `<strong>${t.price}</strong>${t.free}`;
+     }
      
      // ボタン
      document.querySelector('.download-btn').textContent = t.download;
-     document.querySelector('.download-btn.pdf').textContent = t.pdf_download;
+     const pdfBtn = document.querySelector('.download-btn.secondary');
+     if (pdfBtn) pdfBtn.textContent = t.pdf_download;
      
      // その他
      document.querySelector('.download-note').textContent = t.windows_support;
@@ -307,14 +488,16 @@
      // 利用方法ステップ
      const steps = document.querySelectorAll('.step h4');
      const stepTexts = document.querySelectorAll('.step p');
-     steps[0].textContent = t.step1_title;
-     steps[1].textContent = t.step2_title;
-     steps[2].textContent = t.step3_title;
-     steps[3].textContent = t.step4_title;
-     stepTexts[0].textContent = t.step1_text;
-     stepTexts[1].textContent = t.step2_text;
-     stepTexts[2].textContent = t.step3_text;
-     stepTexts[3].textContent = t.step4_text;
+     if (steps.length >= 4 && stepTexts.length >= 4) {
+       steps[0].textContent = t.step1_title;
+       steps[1].textContent = t.step2_title;
+       steps[2].textContent = t.step3_title;
+       steps[3].textContent = t.step4_title;
+       stepTexts[0].textContent = t.step1_text;
+       stepTexts[1].textContent = t.step2_text;
+       stepTexts[2].textContent = t.step3_text;
+       stepTexts[3].textContent = t.step4_text;
+     }
      
      // お問い合わせ
      document.querySelector('#contact h2').textContent = t.contact_title;
