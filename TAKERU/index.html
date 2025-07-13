@@ -16,13 +16,13 @@
         <div class="logo">
           <img src="TakeSoft2.png" alt="TakeSoftロゴ" class="logo-img">
         </div>
-        <nav>
-          <ul>
-            <li><a href="#about">会社紹介</a></li>
-            <li><a href="#services">サービス</a></li>
-            <li><a href="#contact">お問い合わせ</a></li>
-          </ul>
-        </nav>
+    <nav>
+      <ul>
+        <li><a href="#about">会社紹介</a></li>
+        <li><a href="#services">サービス</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
       </div>
       <div class="header-right">
         <button class="lang-btn" id="langBtn">🌐 日本語</button>
@@ -37,13 +37,31 @@
   <main>
     <!-- ヒーローセクション -->
     <section class="hero reveal">
-      <div class="hero-content">
-        <h1>ソフトウェアとシステム開発の<br><span class="highlight">TakeSoft</span></h1>
+      <div class="hero-svg-bg">
+        <svg width="100%" viewBox="0 0 1920 800" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;width:100%;z-index:0;pointer-events:none;height:800px;">
+          <defs>
+            <linearGradient id="heroGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4FBCFF" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#0078d4" stop-opacity="0.2"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,320 Q480,120 960,320 T1920,320 V800 H0 Z" fill="url(#heroGrad)"/>
+          <circle cx="200" cy="200" r="60" fill="#4FBCFF" opacity="0.18">
+            <animate attributeName="cy" values="200;400;200" dur="6s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1720" cy="400" r="40" fill="#00B4D8" opacity="0.13">
+            <animate attributeName="cy" values="400;200;400" dur="7s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="hero-content" style="position:relative;z-index:1;">
+        <h1>ソフトウェアとシステム<br>開発の<br><span class="highlight">TakeSoft</span></h1>
         <p class="hero-subtitle">最先端の技術で、ビジネスを加速させるソリューションを提供します。</p>
         <div class="hero-buttons">
           <a href="#contact" class="cta-btn primary">お問い合わせ</a>
           <a href="#services" class="cta-btn secondary">サービスを見る</a>
         </div>
+        <p class="hero-note" style="font-size:13px;color:#e3f0fa;margin-top:12px;">ご気軽にご相談ください</p>
       </div>
       <div class="hero-visual">
         <div class="hero-image-placeholder">
@@ -64,11 +82,10 @@
     </section>
 
     <!-- 会社紹介セクション -->
-    <svg class="section-divider" viewBox="0 0 1440 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 Q720,60 1440,30 L1440,60 L0,60 Z" fill="#faf9f8"/></svg>
     <section id="about" class="about reveal">
       <div class="section-container">
         <div class="section-header">
-          <h2>会社紹介</h2>
+      <h2>会社紹介</h2>
           <p class="section-subtitle">お客様の成功を支えるITパートナー</p>
         </div>
         <div class="about-content">
@@ -95,7 +112,6 @@
     </section>
 
     <!-- 注目セクション -->
-    <svg class="section-divider" viewBox="0 0 1440 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 Q720,0 1440,30 L1440,60 L0,60 Z" fill="#fff"/></svg>
     <section id="pickup" class="pickup reveal">
       <div class="section-container">
         <div class="section-header">
@@ -114,11 +130,10 @@
     </section>
 
     <!-- サービスセクション -->
-    <svg class="section-divider" viewBox="0 0 1440 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 Q720,60 1440,30 L1440,60 L0,60 Z" fill="#faf9f8"/></svg>
     <section id="services" class="services reveal">
       <div class="section-container">
         <div class="section-header">
-          <h2>サービス内容</h2>
+      <h2>サービス内容</h2>
           <p class="section-subtitle">お客様のニーズに合わせた最適なソリューション</p>
         </div>
         <div class="service-block">
@@ -167,21 +182,25 @@
               <div class="usage-steps">
                 <div class="step">
                   <div class="step-number">1</div>
+                  <span class="step-icon">📥</span>
                   <h4>ダウンロード</h4>
                   <p>上記の「ダウンロード」ボタンからTimeGate.zipをダウンロードしてください。</p>
                 </div>
                 <div class="step">
                   <div class="step-number">2</div>
+                  <span class="step-icon">📁</span>
                   <h4>解凍</h4>
                   <p>ダウンロードしたzipファイルを任意のフォルダに解凍してください。</p>
                 </div>
                 <div class="step">
                   <div class="step-number">3</div>
+                  <span class="step-icon">▶️</span>
                   <h4>起動</h4>
                   <p>解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。</p>
                 </div>
                 <div class="step">
                   <div class="step-number">4</div>
+                  <span class="step-icon">🚀</span>
                   <h4>利用開始</h4>
                   <p>直感的なインターフェースで、すぐにエミュレーションを開始できます。</p>
                 </div>
@@ -192,12 +211,38 @@
       </div>
     </section>
 
+    <!-- Q&Aセクション -->
+    <section id="faq" class="faq reveal">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>よくあるご質問</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">Q. サポートはどのように受けられますか？</button>
+            <div class="faq-answer">A. お問い合わせフォームで無料でお問い合わせできます。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Q. 料金はいくらかかりますか？</button>
+            <div class="faq-answer">A. すべてのサービスは無償で提供されています。登録などの必要がなく、手続きなく無料でサービスを利用できます。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Q. 対応OSは何ですか？</button>
+            <div class="faq-answer">A. Windows 32Bit/64Bitに対応しています。その他のバージョンのOSでのサポートは提供できません。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Q. サーバーはどこにありますか？</button>
+            <div class="faq-answer">A. サーバー1(Webサービス、Webページ用のレンタルサーバー)はシンガポールにあります。サーバー2(アプリケーションのサーバー)はアメリカにあります。どちらも高速ではありませんが、TakeSoft社のWebサービスを支えている2つのサーバーです。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- お問い合わせセクション -->
-    <svg class="section-divider" viewBox="0 0 1440 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 Q720,0 1440,30 L1440,60 L0,60 Z" fill="#fff"/></svg>
     <section id="contact" class="contact reveal">
       <div class="section-container">
         <div class="section-header">
-          <h2>お問い合わせ</h2>
+      <h2>お問い合わせ</h2>
           <p class="section-subtitle">プロジェクトのご相談やお見積もりはお気軽に</p>
         </div>
         <div class="contact-content">
@@ -230,8 +275,8 @@
               <input type="email" name="email" placeholder="メールアドレス" required>
             </div>
             <textarea name="message" placeholder="お問い合わせ内容" required></textarea>
-            <button type="submit">送信</button>
-          </form>
+        <button type="submit">送信</button>
+      </form>
         </div>
         <div id="contactMessage" class="contact-message"></div>
       </div>
@@ -265,7 +310,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <small>&copy; 2024 TakeSoft. All rights reserved.</small>
+    <small>&copy; 2024 TakeSoft. All rights reserved.</small>
       </div>
     </div>
   </footer>
@@ -305,12 +350,26 @@
    function toggleUsage() {
      const content = document.querySelector('.usage-content');
      const btn = document.querySelector('.toggle-btn');
+     const steps = document.querySelectorAll('.step');
+     
      if (content.classList.contains('show')) {
        content.classList.remove('show');
        btn.textContent = '利用方法を表示 ▼';
+       // アニメーションをリセット
+       steps.forEach(step => {
+         step.style.animation = 'none';
+         step.offsetHeight; // リフロー
+         step.style.animation = null;
+       });
      } else {
        content.classList.add('show');
        btn.textContent = '利用方法を隠す ▲';
+       // ステップのアニメーションを再実行
+       steps.forEach((step, index) => {
+         step.style.animation = 'none';
+         step.offsetHeight; // リフロー
+         step.style.animation = `stepFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${0.1 + index * 0.1}s forwards`;
+       });
      }
    }
 
@@ -592,6 +651,22 @@
        } catch (error) {
          console.log('Download tracking failed:', error);
        }
+     });
+   });
+
+   // FAQアコーディオン
+   const faqQuestions = document.querySelectorAll('.faq-question');
+   faqQuestions.forEach(q => {
+     q.addEventListener('click', function() {
+       const item = this.parentElement;
+       // すでに開いている場合は閉じる
+       if(item.classList.contains('active')) {
+         item.classList.remove('active');
+         return;
+       }
+       // 他を閉じて自分だけ開く
+       document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+       item.classList.add('active');
      });
    });
   </script>

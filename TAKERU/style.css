@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /* マイクロソフト風デザイン - TakeSoft */
 
 /* 基本スタイル */
@@ -188,6 +192,8 @@ nav a:hover::after {
 main {
   margin-top: 70px;
   background: #ffffff;
+  box-shadow: 0 8px 32px rgba(0,120,212,0.06);
+  padding-bottom: 48px;
 }
 
 /* セクション共通 */
@@ -219,69 +225,79 @@ main {
 
 /* ヒーローセクション */
 .hero {
-  background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
-  color: #ffffff;
-  padding: 120px 0 100px 0;
   position: relative;
+  width: 100%;
+  min-height: 340px;
+  background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
+  color: #fff;
   overflow: hidden;
-  transform: translateY(0);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
 }
 
-.hero:hover {
-  transform: translateY(-8px);
-}
-
-.hero::before {
-  content: '';
+.hero-svg-bg {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-  opacity: 0.3;
+  width: 100%;
+  height: 800px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-svg-bg svg {
+  width: 100% !important;
+  height: 800px !important;
+  min-width: 100vw;
+  min-height: 800px;
+  display: block;
 }
 
 .hero-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin-left: 5%;
+  margin-right: 0;
+  margin-top: 60px;
   padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  text-align: left;
+  display: block;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .hero h1 {
-  font-size: 56px;
-  font-weight: 700;
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
   line-height: 1.1;
   margin: 0 0 24px 0;
-  background: linear-gradient(270deg, #40e0d0, #0078d4, #40e0d0, #106ebe, #40e0d0);
-  background-size: 400% 400%;
-  color: transparent;
-  background-clip: text;
+  text-shadow: 0 4px 32px rgba(0,120,212,0.18), 0 1.5px 8px rgba(0,0,0,0.10);
+  background: linear-gradient(90deg, #ffffff 0%, #4FBCFF 100%);
   -webkit-background-clip: text;
-  animation: hero-gradient-move 12s ease-in-out infinite;
-}
-@keyframes hero-gradient-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero .highlight {
-  color: #40e0d0;
+  color: #7fffd4;
+  background: none;
+  -webkit-text-fill-color: #7fffd4;
+  font-weight: 900;
+  letter-spacing: 0.06em;
 }
 
 .hero-subtitle {
   font-size: 24px;
-  font-weight: 400;
-  margin: 0 0 40px 0;
-  opacity: 0.9;
+  font-weight: 500;
+  color: #e3f0fa;
+  margin-bottom: 32px;
+  text-shadow: 0 2px 8px rgba(0,120,212,0.10);
+  letter-spacing: 0.01em;
 }
 
 .hero-buttons {
@@ -350,17 +366,21 @@ main {
 
 .hero-visual {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .hero-image-placeholder {
-  position: relative;
+  position: absolute;
   width: 400px;
   height: 300px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   backdrop-filter: blur(10px);
+  top: 24px;
+  right: 32px;
+  left: auto;
+  margin: 0;
 }
 
 .floating-card {
@@ -527,8 +547,8 @@ main {
   .pickup-img {
     height: 120px;
     object-fit: contain;
-  }
-  .hero h1 {
+}
+.hero h1 {
     font-size: 22px;
     line-height: 1.2;
     margin-bottom: 12px;
@@ -782,85 +802,189 @@ main {
 
 .usage-toggle {
   text-align: center;
+  margin-top: 32px;
 }
 
 .toggle-btn {
-  background: transparent;
-  border: 1px solid #edebe9;
-  color: #323130;
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
+  background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
+  border: none;
+  color: #ffffff;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 120, 212, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .toggle-btn:hover {
-  background: #f3f2f1;
-  border-color: #c7c6c4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 120, 212, 0.4);
+}
+
+.toggle-btn:hover::before {
+  left: 100%;
 }
 
 .usage-content {
-  margin-top: 32px;
+  margin-top: 40px;
   opacity: 0;
   max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  overflow: visible;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .usage-content.show {
   opacity: 1;
-  max-height: 500px;
+  max-height: 800px;
 }
 
 .usage-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  position: relative;
+  overflow: visible;
+}
+
+.usage-steps::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  right: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #0078d4, #106ebe, #0078d4);
+  z-index: 0;
+  opacity: 0.3;
 }
 
 .step {
-  background: #faf9f8;
-  padding: 24px;
-  border-radius: 8px;
-  border-left: 4px solid #0078d4;
+  background: linear-gradient(135deg, #ffffff 0%, #faf9f8 100%);
+  padding: 32px 24px 24px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 120, 212, 0.1);
   position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+  overflow: visible;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.usage-content.show .step {
+  animation: stepFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.usage-content.show .step:nth-child(1) { animation-delay: 0.1s; }
+.usage-content.show .step:nth-child(2) { animation-delay: 0.2s; }
+.usage-content.show .step:nth-child(3) { animation-delay: 0.3s; }
+.usage-content.show .step:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes stepFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0078d4, #106ebe);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .step:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 120, 212, 0.15);
+  border-color: rgba(0, 120, 212, 0.3);
+}
+
+.step:hover::before {
+  opacity: 1;
 }
 
 .step-number {
   position: absolute;
-  top: -12px;
-  left: -12px;
-  width: 32px;
-  height: 32px;
-  background: #0078d4;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
   color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(0, 120, 212, 0.4);
+  z-index: 10;
+}
+
+.step-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+  text-align: center;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.step:hover .step-icon {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .step h4 {
   color: #323130;
-  margin: 0 0 12px 0;
-  font-size: 18px;
-  font-weight: 600;
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+}
+
+.step h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #0078d4, #106ebe);
+  border-radius: 1px;
 }
 
 .step p {
   margin: 0;
   color: #605e5c;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 15px;
+  text-align: center;
 }
 
 /* お問い合わせセクション */
@@ -1067,7 +1191,6 @@ footer {
   text-decoration: none;
   transition: color 0.2s ease;
 }
-
 .footer-section a:hover {
   color: #ffffff;
 }
@@ -1143,9 +1266,14 @@ body::before {
 /* レスポンシブデザイン */
 @media (max-width: 1024px) {
   .hero-content {
-    grid-template-columns: 1fr;
-    gap: 48px;
-    text-align: center;
+    max-width: 900px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    padding: 0 24px !important;
+    display: block !important;
+    position: relative;
+    z-index: 1;
   }
   
   .about-content {
@@ -1156,7 +1284,7 @@ body::before {
   .contact-content {
     grid-template-columns: 1fr;
     gap: 48px;
-  }
+}
   
   .footer-content {
     grid-template-columns: 1fr;
@@ -1228,6 +1356,49 @@ body::before {
   .about, .pickup, .services, .contact {
     padding: 60px 0;
   }
+  
+  .usage-steps {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .usage-steps::before {
+    display: none;
+  }
+  
+  .step {
+    padding: 24px 20px 20px 20px;
+    overflow: visible;
+  }
+  
+  .step-number {
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    z-index: 10;
+  }
+  
+  .step-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  
+  .step h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .step p {
+    font-size: 14px;
+  }
+  
+  .toggle-btn {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1262,4 +1433,66 @@ body::before {
   .service-block h3 {
     font-size: 28px;
   }
+} 
+
+@media (max-width: 600px) {
+  .header-container {
+    padding: 0 8px;
+  }
+  .header-left {
+    gap: 12px;
+  }
+  nav ul {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  nav a {
+    font-size: 12px;
+    padding: 4px 6px;
+    min-width: 60px;
+    word-break: keep-all;
+  }
+  .lang-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+} 
+
+/* Q&A（FAQ）セクション */
+.faq-list {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid #e3f0fa;
+  padding: 16px 0;
+}
+.faq-question {
+  background: none;
+  border: none;
+  color: #0078d4;
+  font-size: 18px;
+  font-weight: 600;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+  padding: 0;
+}
+.faq-question:hover {
+  color: #005fa3;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: #323130;
+  font-size: 16px;
+  line-height: 1.7;
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+  padding: 0 0;
+}
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  padding: 12px 0 0 0;
 } 
