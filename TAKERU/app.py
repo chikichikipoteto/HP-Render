@@ -1,9 +1,10 @@
-from flask import Flask, send_from_directory, request, jsonify, render_template_string
+from flask import Flask, send_from_directory, request, jsonify, render_template_string, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 import smtplib
 from email.mime.text import MIMEText
+import random
 
 app = Flask(__name__, static_folder="TAKERU")
 
@@ -36,13 +37,20 @@ class Download(db.Model):
     user_agent = db.Column(db.String(200))
     downloaded_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(128), nullable=False)
+
 @app.route("/")
 def index():
-    return send_from_directory(app.static_folder, "index.html")
+    static_dir = app.static_folder if app.static_folder else "."
+    return send_from_directory(static_dir, "index.html")
 
 @app.route("/<path:path>")
 def static_files(path):
-    return send_from_directory(app.static_folder, path)
+    static_dir = app.static_folder if app.static_folder else "."
+    return send_from_directory(static_dir, path)
 
 @app.route("/api/contact", methods=["POST"])
 def submit_contact():
@@ -137,9 +145,85 @@ def admin():
     except Exception as e:
         return jsonify({"error": "管理データの取得に失敗しました"}), 500
 
+@app.route("/api/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    user = User.query.filter_by(email=email, password=password).first()
+    if user:
+        session['user_id'] = user.id
+        return jsonify({"success": True, "message": "ログイン成功"})
+    else:
+        return jsonify({"success": False, "message": "メールアドレスまたはパスワードが違います"}), 401
+
+@app.route("/api/logout", methods=["POST"])
+def logout():
+    session.pop('user_id', None)
+    return jsonify({"success": True, "message": "ログアウトしました"})
+
+@app.route("/api/login_status")
+def login_status():
+    user_id = session.get('user_id')
+    if user_id:
+        user = User.query.get(user_id)
+        if user:
+            return jsonify({"logged_in": True, "email": user.email})
+    return jsonify({"logged_in": False})
+
+@app.route("/api/send_code", methods=["POST"])
+def send_code():
+    data = request.get_json()
+    email = data.get('email')
+    if not email or '@' not in email:
+        return jsonify({"success": False, "message": "正しいメールアドレスを入力してください"}), 400
+    code = str(random.randint(10000, 99999))
+    session['auth_email'] = email
+    session['auth_code'] = code
+    # メール送信
+    from_addr = "takesoftservice@gmail.com"
+    to_addr = email
+    password = os.environ.get('GMAIL_APP_PASSWORD')
+    subject = "【TakeSoft】認証コードのお知らせ"
+    body = f"ログイン認証コード: {code}\n\nこのコードを画面に入力してください。\n\nTakeSoft"
+    msg = MIMEText(body, "plain", "utf-8")
+    msg["Subject"] = subject
+    msg["From"] = from_addr
+    msg["To"] = to_addr
+    try:
+        if password:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+                server.login(from_addr, password)
+                server.send_message(msg)
+        else:
+            return jsonify({"success": False, "message": "メール送信設定がありません"}), 500
+    except Exception as e:
+        return jsonify({"success": False, "message": "メール送信に失敗しました"}), 500
+    return jsonify({"success": True, "message": "認証コードを送信しました"})
+
+@app.route("/api/verify_code", methods=["POST"])
+def verify_code():
+    data = request.get_json()
+    email = data.get('email')
+    code = data.get('code')
+    if not email or not code:
+        return jsonify({"success": False, "message": "情報が不足しています"}), 400
+    if session.get('auth_email') == email and session.get('auth_code') == code:
+        session['user_id'] = email  # ログイン状態としてメールアドレスを保存
+        session.pop('auth_code', None)
+        session.pop('auth_email', None)
+        return jsonify({"success": True, "message": "認証成功"})
+    else:
+        return jsonify({"success": False, "message": "認証コードが違います"}), 401
+
 # データベースの初期化
 with app.app_context():
     db.create_all()
+    # 仮ユーザーが存在しなければ追加
+    if not User.query.filter_by(email="test@example.com").first():
+        user = User(email="test@example.com", password="test123")
+        db.session.add(user)
+        db.session.commit()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000) 

@@ -132,7 +132,7 @@ nav a:hover::after {
   position: relative;
 }
 
-.lang-btn {
+.lang-btn, .login-header-btn {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
   border: 1px solid #edebe9;
   color: #323130;
@@ -146,8 +146,7 @@ nav a:hover::after {
     0 2px 4px rgba(0, 0, 0, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
-
-.lang-btn:hover {
+.lang-btn:hover, .login-header-btn:hover {
   background: linear-gradient(135deg, #f3f2f1 0%, #e9ecef 50%, #dee2e6 100%);
   border-color: #c7c6c4;
   transform: translateY(-1px);
@@ -1618,6 +1617,13 @@ body::before {
 .faq-item.active .faq-answer {
   max-height: 200px;
   padding: 12px 0 0 0;
+} 
+
+.faq-icon {
+  font-size: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+  opacity: 0.85;
 } 
 
 /* 利用方法アイコンごとに異なるアニメーション */

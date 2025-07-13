@@ -36,6 +36,9 @@
           <div class="lang-option" data-lang="ja">🇯🇵 日本語</div>
           <div class="lang-option" data-lang="en">🇺🇸 English</div>
         </div>
+        <button class="login-header-btn" id="loginHeaderBtn" style="margin-left:12px;">ログイン</button>
+        <span id="headerLoggedIn" style="display:none;margin-left:12px;font-size:14px;"></span>
+        <button id="headerLogoutBtn" style="display:none;margin-left:8px;">ログアウト</button>
       </div>
     </div>
   </header>
@@ -308,6 +311,25 @@
       </div>
     </section>
   </main>
+
+<!-- ログインダイアログ（2段階式・API連携） -->
+<div id="loginDialog" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0005;z-index:2000;align-items:center;justify-content:center;">
+  <div style="background:#fff;padding:32px 24px;border-radius:12px;box-shadow:0 4px 24px #0003;min-width:320px;max-width:90vw;">
+    <h3 style="margin-top:0;">ログイン</h3>
+    <div id="loginStep1">
+      <input type="email" id="loginEmail" placeholder="メールアドレス" style="width:95%;margin-bottom:8px;padding:8px;">
+      <button id="sendCodeBtn" style="width:100%;padding:8px 0;">確認コード送信</button>
+      <div id="loginMsg1" style="color:#d33;font-size:13px;margin-top:8px;"></div>
+    </div>
+    <div id="loginStep2" style="display:none;">
+      <div style="margin-bottom:8px;">認証コードをメールで送信しました。</div>
+      <input type="text" id="inputCode" placeholder="5桁の認証コード" maxlength="5" style="width:95%;margin-bottom:8px;padding:8px;">
+      <button id="verifyCodeBtn" style="width:100%;padding:8px 0;">認証</button>
+      <div id="loginMsg2" style="color:#d33;font-size:13px;margin-top:8px;"></div>
+    </div>
+    <button id="loginDialogClose" style="margin-top:16px;width:100%;">閉じる</button>
+  </div>
+</div>
 
   <footer>
     <div class="footer-container">
@@ -706,11 +728,133 @@
          item.classList.remove('active');
          return;
        }
-       // 他を閉じて自分だけ開く
-       document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+       // 他を閉じず、自分だけトグル
        item.classList.add('active');
      });
    });
+
+   // ログイン状態管理
+   function setLoggedIn(email) {
+     localStorage.setItem('loggedIn', '1');
+     localStorage.setItem('loginEmail', email);
+   }
+   function setLoggedOut() {
+     localStorage.removeItem('loggedIn');
+     localStorage.removeItem('loginEmail');
+   }
+   function isLoggedIn() {
+     return localStorage.getItem('loggedIn') === '1';
+   }
+   function getLoginEmail() {
+     return localStorage.getItem('loginEmail') || '';
+   }
+   // ログインUI更新
+   function updateLoginUI() {
+     fetch('/api/login_status').then(r=>r.json()).then(res=>{
+       if(res.logged_in) {
+         document.getElementById('loginHeaderBtn').style.display = 'none';
+         document.getElementById('headerLoggedIn').style.display = '';
+         document.getElementById('headerLoggedIn').textContent = 'ログイン中：' + res.email;
+         document.getElementById('headerLogoutBtn').style.display = '';
+         document.getElementById('loginDialog').style.display = 'none';
+       } else {
+         document.getElementById('loginHeaderBtn').style.display = '';
+         document.getElementById('headerLoggedIn').style.display = 'none';
+         document.getElementById('headerLogoutBtn').style.display = 'none';
+       }
+     });
+   }
+   updateLoginUI();
+   // ログインダイアログ表示
+   const loginHeaderBtn = document.getElementById('loginHeaderBtn');
+   if(loginHeaderBtn) {
+     loginHeaderBtn.onclick = function() {
+       document.getElementById('loginDialog').style.display = 'flex';
+       document.getElementById('loginStep1').style.display = '';
+       document.getElementById('loginStep2').style.display = 'none';
+       document.getElementById('loginMsg1').textContent = '';
+       document.getElementById('loginMsg2').textContent = '';
+       document.getElementById('loginEmail').value = '';
+       document.getElementById('inputCode').value = '';
+     }
+   }
+   // 確認コード送信
+   let currentEmail = '';
+   const sendCodeBtn = document.getElementById('sendCodeBtn');
+   if(sendCodeBtn) {
+     sendCodeBtn.onclick = function() {
+       const email = document.getElementById('loginEmail').value.trim();
+       if(!email.match(/^.+@.+\..+$/)) {
+         document.getElementById('loginMsg1').textContent = '正しいメールアドレスを入力してください';
+         return;
+       }
+       document.getElementById('sendCodeBtn').disabled = true;
+       document.getElementById('loginMsg1').textContent = '送信中...';
+       fetch('/api/send_code', {
+         method:'POST',
+         headers:{'Content-Type':'application/json'},
+         body:JSON.stringify({email})
+       }).then(r=>r.json()).then(res=>{
+         document.getElementById('sendCodeBtn').disabled = false;
+         if(res.success) {
+           currentEmail = email;
+           document.getElementById('loginStep1').style.display = 'none';
+           document.getElementById('loginStep2').style.display = '';
+           document.getElementById('loginMsg2').textContent = '';
+           document.getElementById('inputCode').value = '';
+         } else {
+           document.getElementById('loginMsg1').textContent = res.message;
+         }
+       }).catch(()=>{
+         document.getElementById('sendCodeBtn').disabled = false;
+         document.getElementById('loginMsg1').textContent = '通信エラー';
+       });
+     }
+   }
+   // コード認証
+   const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+   if(verifyCodeBtn) {
+     verifyCodeBtn.onclick = function() {
+       const code = document.getElementById('inputCode').value.trim();
+       if(!code.match(/^\d{5}$/)) {
+         document.getElementById('loginMsg2').textContent = '5桁の認証コードを入力してください';
+         return;
+       }
+       document.getElementById('verifyCodeBtn').disabled = true;
+       document.getElementById('loginMsg2').textContent = '認証中...';
+       fetch('/api/verify_code', {
+         method:'POST',
+         headers:{'Content-Type':'application/json'},
+         body:JSON.stringify({email: currentEmail, code})
+       }).then(r=>r.json()).then(res=>{
+         document.getElementById('verifyCodeBtn').disabled = false;
+         if(res.success) {
+           updateLoginUI();
+         } else {
+           document.getElementById('loginMsg2').textContent = res.message;
+         }
+       }).catch(()=>{
+         document.getElementById('verifyCodeBtn').disabled = false;
+         document.getElementById('loginMsg2').textContent = '通信エラー';
+       });
+     }
+   }
+   // ログアウト処理
+   const headerLogoutBtn = document.getElementById('headerLogoutBtn');
+   if(headerLogoutBtn) {
+     headerLogoutBtn.onclick = function() {
+       fetch('/api/logout', {method:'POST'}).then(r=>r.json()).then(res=>{
+         updateLoginUI();
+       });
+     }
+   }
+   // ダイアログ閉じる
+   const loginDialogClose = document.getElementById('loginDialogClose');
+   if(loginDialogClose) {
+     loginDialogClose.onclick = function() {
+       document.getElementById('loginDialog').style.display = 'none';
+     }
+   }
   </script>
 </body>
 </html> 
