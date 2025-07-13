@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TakeSoft | ソフトウェア・システム開発</title>
+  <link rel="icon" type="image/png" href="TakeSoft ICO.png">
+  <link rel="shortcut icon" type="image/png" href="TakeSoft ICO.png">
+  <link rel="apple-touch-icon" href="TakeSoft ICO.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="TakeSoft">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -95,15 +101,15 @@
           </div>
           <div class="about-stats">
             <div class="stat-item">
-              <div class="stat-number">100+</div>
+              <div class="stat-number">10+</div>
               <div class="stat-label">プロジェクト実績</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">50+</div>
+              <div class="stat-number">1+</div>
               <div class="stat-label">お客様企業</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">5年</div>
+              <div class="stat-number">6年</div>
               <div class="stat-label">業界経験</div>
             </div>
           </div>
@@ -118,9 +124,13 @@
           <h2>注目</h2>
           <p class="section-subtitle">最新のプロジェクトとニュース</p>
         </div>
-        <div class="pickup-slider">
-          <img src="pickup1.png" alt="注目画像1" class="pickup-img active">
-          <img src="pickup(2).png" alt="注目画像2" class="pickup-img">
+        <div class="pickup-slider-controls">
+          <button class="pickup-prev">&lt;</button>
+          <div class="pickup-slider">
+            <img src="pickup1.png" alt="注目画像1" class="pickup-img active">
+            <img src="pickup(2).png" alt="注目画像2" class="pickup-img">
+          </div>
+          <button class="pickup-next">&gt;</button>
         </div>
         <div class="pickup-indicators">
           <span class="indicator active" data-index="0"></span>
@@ -145,19 +155,19 @@
           <div class="service-features">
             <div class="feature-grid">
               <div class="feature-item">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon speed">⚡</div>
                 <div class="feature-text">インストール後すぐに使えるシンプル設計</div>
               </div>
               <div class="feature-item">
-                <div class="feature-icon">🚀</div>
+                <div class="feature-icon safety">🛡️</div>
                 <div class="feature-text">業界最速クラスのエミュレーション速度</div>
               </div>
               <div class="feature-item">
-                <div class="feature-icon">🔄</div>
+                <div class="feature-icon rotate">🔄</div>
                 <div class="feature-text">多様なプラットフォームに対応</div>
               </div>
               <div class="feature-item">
-                <div class="feature-icon">👆</div>
+                <div class="feature-icon tap">👆</div>
                 <div class="feature-text">直感的なユーザーインターフェース</div>
               </div>
             </div>
@@ -182,25 +192,25 @@
               <div class="usage-steps">
                 <div class="step">
                   <div class="step-number">1</div>
-                  <span class="step-icon">📥</span>
+                  <span class="step-icon download">📥</span>
                   <h4>ダウンロード</h4>
                   <p>上記の「ダウンロード」ボタンからTimeGate.zipをダウンロードしてください。</p>
                 </div>
                 <div class="step">
                   <div class="step-number">2</div>
-                  <span class="step-icon">📁</span>
+                  <span class="step-icon extract">📁</span>
                   <h4>解凍</h4>
                   <p>ダウンロードしたzipファイルを任意のフォルダに解凍してください。</p>
                 </div>
                 <div class="step">
                   <div class="step-number">3</div>
-                  <span class="step-icon">▶️</span>
+                  <span class="step-icon launch">▶️</span>
                   <h4>起動</h4>
                   <p>解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。</p>
                 </div>
                 <div class="step">
                   <div class="step-number">4</div>
-                  <span class="step-icon">🚀</span>
+                  <span class="step-icon start">🚀</span>
                   <h4>利用開始</h4>
                   <p>直感的なインターフェースで、すぐにエミュレーションを開始できます。</p>
                 </div>
@@ -219,20 +229,36 @@
         </div>
         <div class="faq-list">
           <div class="faq-item">
-            <button class="faq-question">Q. サポートはどのように受けられますか？</button>
+            <button class="faq-question"><span class="faq-icon">💡</span>Q. サポートはどのように受けられますか？</button>
             <div class="faq-answer">A. お問い合わせフォームで無料でお問い合わせできます。</div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">Q. 料金はいくらかかりますか？</button>
+            <button class="faq-question"><span class="faq-icon">💰</span>Q. 料金はいくらかかりますか？</button>
             <div class="faq-answer">A. すべてのサービスは無償で提供されています。登録などの必要がなく、手続きなく無料でサービスを利用できます。</div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">Q. 対応OSは何ですか？</button>
+            <button class="faq-question"><span class="faq-icon">💻</span>Q. 対応OSは何ですか？</button>
             <div class="faq-answer">A. Windows 32Bit/64Bitに対応しています。その他のバージョンのOSでのサポートは提供できません。</div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">Q. サーバーはどこにありますか？</button>
+            <button class="faq-question"><span class="faq-icon">🌐</span>Q. サーバーはどこにありますか？</button>
             <div class="faq-answer">A. サーバー1(Webサービス、Webページ用のレンタルサーバー)はシンガポールにあります。サーバー2(アプリケーションのサーバー)はアメリカにあります。どちらも高速ではありませんが、TakeSoft社のWebサービスを支えている2つのサーバーです。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question"><span class="faq-icon">⏰</span>Q. 返信にはどれくらい時間がかかりますか？</button>
+            <div class="faq-answer">A. 通常1～2営業日以内にご返信いたします。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question"><span class="faq-icon">📱</span>Q. スマートフォンやタブレットでも利用できますか？</button>
+            <div class="faq-answer">A. はい、レスポンシブデザインに対応しており、スマートフォンやタブレットでも快適にご利用いただけます。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question"><span class="faq-icon">🏢</span>Q. TakeSoftはどこの国の企業ですか？</button>
+            <div class="faq-answer">A. TakeSoftは、日本の埼玉県にある企業です。営業者はすべて日本人で、すべてのサービスが日本向けに最適化されています。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question"><span class="faq-icon">📱</span>Q. 入力した個人情報はどのように扱われますか？</button>
+            <div class="faq-answer">A. お問い合わせ内容や個人情報は厳重に管理し、第三者に提供することはありません。</div>
           </div>
         </div>
       </div>
@@ -248,24 +274,24 @@
         <div class="contact-content">
           <div class="contact-info">
             <div class="contact-item">
-              <div class="contact-icon">📧</div>
+              <div class="contact-icon mail">📧</div>
               <div class="contact-text">
                 <h4>メール</h4>
-                <p>info@takesoft.com</p>
+                <p>takesoftservice@gmail.com</p>
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-icon">📞</div>
+              <div class="contact-icon phone">📞</div>
               <div class="contact-text">
                 <h4>電話</h4>
-                <p>03-1234-5678</p>
+                <p>メンテナンス中</p>
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-icon">📍</div>
+              <div class="contact-icon location">📍</div>
               <div class="contact-text">
                 <h4>所在地</h4>
-                <p>東京都渋谷区</p>
+                <p>埼玉県緑区</p>
               </div>
             </div>
           </div>
@@ -329,21 +355,37 @@
 
     // 注目欄スライドショー
     const pickupImgs = document.querySelectorAll('.pickup-img');
-    const indicators = document.querySelectorAll('.indicator');
+    const pickupPrevBtn = document.querySelector('.pickup-prev');
+    const pickupNextBtn = document.querySelector('.pickup-next');
+    const pickupSlider = document.querySelector('.pickup-slider');
+    const pickupIndicators = document.querySelectorAll('.indicator');
     let pickupIdx = 0;
     let slideInterval = setInterval(() => {
       pickupImgs.forEach((img, i) => img.classList.toggle('active', i === pickupIdx));
-      indicators.forEach((ind, i) => ind.classList.toggle('active', i === pickupIdx));
+      pickupIndicators.forEach((ind, i) => ind.classList.toggle('active', i === pickupIdx));
       pickupIdx = (pickupIdx + 1) % pickupImgs.length;
     }, 5000);
     
     // インジケータークリック時の画像切り替え
-    indicators.forEach((indicator, index) => {
+    pickupIndicators.forEach((indicator, index) => {
       indicator.addEventListener('click', () => {
         pickupIdx = index;
         pickupImgs.forEach((img, i) => img.classList.toggle('active', i === pickupIdx));
-        indicators.forEach((ind, i) => ind.classList.toggle('active', i === pickupIdx));
+        pickupIndicators.forEach((ind, i) => ind.classList.toggle('active', i === pickupIdx));
       });
+    });
+
+    // 左右コントロールボタンのイベントリスナー
+    pickupPrevBtn.addEventListener('click', () => {
+      pickupIdx = (pickupIdx - 1 + pickupImgs.length) % pickupImgs.length;
+      pickupImgs.forEach((img, i) => img.classList.toggle('active', i === pickupIdx));
+      pickupIndicators.forEach((ind, i) => ind.classList.toggle('active', i === pickupIdx));
+    });
+
+    pickupNextBtn.addEventListener('click', () => {
+      pickupIdx = (pickupIdx + 1) % pickupImgs.length;
+      pickupImgs.forEach((img, i) => img.classList.toggle('active', i === pickupIdx));
+      pickupIndicators.forEach((ind, i) => ind.classList.toggle('active', i === pickupIdx));
     });
    
    // 利用方法の折りたたみ機能

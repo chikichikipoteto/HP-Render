@@ -2,6 +2,8 @@ from flask import Flask, send_from_directory, request, jsonify, render_template_
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
+import smtplib
+from email.mime.text import MIMEText
 
 app = Flask(__name__, static_folder="TAKERU")
 
@@ -53,6 +55,23 @@ def submit_contact():
         )
         db.session.add(contact)
         db.session.commit()
+
+        # --- ここからメール送信処理 ---
+        from_addr = "takesoftservice@gmail.com"
+        to_addr = "takesoftservice@gmail.com"
+        password = os.environ.get('GMAIL_APP_PASSWORD')
+        subject = "[TakeSoft] お問い合わせ受信"
+        body = f"お名前: {data['name']}\nメール: {data['email']}\n内容:\n{data['message']}"
+        msg = MIMEText(body, "plain", "utf-8")
+        msg["Subject"] = subject
+        msg["From"] = from_addr
+        msg["To"] = to_addr
+        if password:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+                server.login(from_addr, password)
+                server.send_message(msg)
+        # --- ここまでメール送信処理 ---
+
         return jsonify({"success": True, "message": "お問い合わせを受け付けました"}), 200
     except Exception as e:
         return jsonify({"success": False, "message": "エラーが発生しました"}), 500
