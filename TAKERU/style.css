@@ -290,11 +290,22 @@ main {
 }
 
 .hero .highlight {
-  color: #7fffd4;
-  background: none;
-  -webkit-text-fill-color: #7fffd4;
-  font-weight: 900;
-  letter-spacing: 0.06em;
+  background: linear-gradient(45deg, #7fdfff, #4FBCFF, #aeefff, #ffffff, #7fdfff);
+  background-size: 300% 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shineText 2.5s linear infinite, popText 1.8s ease-in-out infinite;
+  font-weight: bold;
+  text-shadow: 0 2px 8px #0078d455;
+}
+@keyframes shineText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+@keyframes popText {
+  0%, 100% { transform: scale(1);}
+  50% { transform: scale(1.12);}
 }
 
 .hero-subtitle {
@@ -1719,4 +1730,114 @@ body::before {
   margin-right: 8px;
   vertical-align: middle;
   opacity: 0.85;
+} 
+
+.announce {
+  background: #f8fbff;
+  padding: 32px 0 16px 0;
+}
+.announce-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.announce-list li {
+  padding: 12px 0 12px 0;
+  border-bottom: 1px solid #e3e8ee;
+  font-size: 16px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.announce-list li:last-child {
+  border-bottom: none;
+}
+.announce-date {
+  color: #0078d4;
+  font-weight: 600;
+  font-size: 14px;
+  margin-right: 8px;
+  min-width: 90px;
+  display: inline-block;
+} 
+
+/* 2カラムサービス用 */
+.service-block {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.service-block-half {
+  flex: 1 1 0;
+  min-width: 320px;
+  max-width: 50%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 900px) {
+  .service-block {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .service-block-half {
+    max-width: 100%;
+    min-width: 0;
+  }
+} 
+
+/* サービス2カラム用ラッパー */
+.service-blocks-row {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: flex-start; /* ボックスの高さを揃えないようにする */
+}
+.service-blocks-row .service-block {
+  flex: 1 1 0;
+  min-width: 320px;
+  max-width: 50%;
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .service-blocks-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .service-blocks-row .service-block {
+    max-width: 100%;
+    min-width: 0;
+  }
+} 
+
+/* サービスボックス内の中央寄せ */
+.service-block {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.service-block .service-header,
+.service-block .service-features,
+.service-block .service-pricing,
+.service-block .service-actions,
+.service-block .service-details,
+.service-block .usage-toggle,
+.service-block .usage-content,
+.service-block .usage-steps,
+.service-block .step {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.service-block .feature-grid {
+  justify-content: center;
+}
+.service-block .feature-item {
+  justify-content: center;
+}
+.service-block .step h4,
+.service-block .step p {
+  text-align: center;
 } 

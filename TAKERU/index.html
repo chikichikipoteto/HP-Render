@@ -142,6 +142,26 @@
       </div>
     </section>
 
+    <!-- お客様の声・導入事例セクション -->
+    <section id="voice" class="voice reveal">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>お客様の声・導入事例</h2>
+        </div>
+        <div class="voice-list">
+          <div class="voice-item">
+            <div class="voice-header">
+              <span class="voice-customer">顧客名: 匿名</span>
+              <span class="voice-service">導入サービス名: Time Gate Desktop</span>
+            </div>
+            <div class="voice-comment">
+              <p>このエミュレーターは、とても安定していて、軽くて最適です。サポートも充実していて、導入してよかったと思っています。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- お知らせセクション -->
     <section class="announce reveal">
       <div class="section-container">
@@ -149,7 +169,7 @@
           <h2>お知らせ</h2>
         </div>
         <ul class="announce-list">
-          <li><span class="announce-date">2025/07/13</span> 現在アカウント認証サーバーが停止しています。ご不便をおかけして申し訳ございません。</li>
+          <li><span class="announce-date">2025/07/13</span> <a href="news-detail.html?id=1">現在アカウント認証サーバーが停止しています。ご不便をおかけして申し訳ございません。</a></li>
           <li><span class="announce-date">2025/07/12</span> TakeSoft公式Webページを公開しました!!</li>
         </ul>
       </div>
@@ -162,73 +182,150 @@
       <h2>サービス内容</h2>
           <p class="section-subtitle">お客様のニーズに合わせた最適なソリューション</p>
         </div>
-        <div class="service-block">
-          <div class="service-header">
-            <div class="free-badge">Free</div>
-            <h3>Time Gate</h3>
-            <p class="service-subtitle"><strong>最も簡単で高速なエミュレーターソフトウェア</strong></p>
-          </div>
-          <div class="service-features">
-            <div class="feature-grid">
-              <div class="feature-item">
-                <div class="feature-icon speed">⚡</div>
-                <div class="feature-text">インストール後すぐに使えるシンプル設計</div>
+        <!-- サービス内容2カラム配置 -->
+        <div class="service-blocks-row" style="display: flex; gap: 32px; flex-wrap: wrap;">
+          <!-- Time Gate（左） -->
+          <div class="service-block" style="flex: 1 1 0; min-width: 320px; max-width: 50%; box-sizing: border-box;">
+            <div class="service-header">
+              <div class="free-badge">Free</div>
+              <h3>Time Gate</h3>
+              <p class="service-subtitle"><strong>最も簡単で高速なエミュレーターソフトウェア</strong></p>
+            </div>
+            <div class="service-features">
+              <div class="feature-grid">
+                <div class="feature-item">
+                  <div class="feature-icon speed">⚡</div>
+                  <div class="feature-text">インストール後すぐに使えるシンプル設計</div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon safety">🛡️</div>
+                  <div class="feature-text">業界最速クラスのエミュレーション速度</div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon rotate">🔄</div>
+                  <div class="feature-text">多様なプラットフォームに対応</div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon tap">👆</div>
+                  <div class="feature-text">直感的なユーザーインターフェース</div>
+                </div>
               </div>
-              <div class="feature-item">
-                <div class="feature-icon safety">🛡️</div>
-                <div class="feature-text">業界最速クラスのエミュレーション速度</div>
+            </div>
+            <div class="service-pricing">
+              <div class="price-info">
+                <span class="price-label">料金：</span>
+                <span class="price-value">無料</span>
               </div>
-              <div class="feature-item">
-                <div class="feature-icon rotate">🔄</div>
-                <div class="feature-text">多様なプラットフォームに対応</div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon tap">👆</div>
-                <div class="feature-text">直感的なユーザーインターフェース</div>
+            </div>
+            <div class="service-actions">
+              <a href="TimeGate.zip" class="download-btn primary" download>ダウンロード</a>
+              <a href="TimeGate_manual.pdf" class="download-btn secondary" download>PDFダウンロード</a>
+            </div>
+            <div class="service-details">
+              <div class="download-note">Windows 64Bit対応</div>
+              <div class="disclaimer">Time Gateは個人で作成したソフトウェアです。バグやエラー、クラッシュなどが発生する恐れがあります。</div>
+            </div>
+            <div class="usage-toggle">
+              <button class="toggle-btn" onclick="toggleUsage(this)">利用方法を表示 ▼</button>
+              <div class="usage-content">
+                <div class="usage-steps">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <span class="step-icon download">📥</span>
+                    <h4>ダウンロード</h4>
+                    <p>上記の「ダウンロード」ボタンからTimeGate.zipをダウンロードしてください。</p>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <span class="step-icon extract">📁</span>
+                    <h4>解凍</h4>
+                    <p>ダウンロードしたzipファイルを任意のフォルダに解凍してください。</p>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <span class="step-icon launch">▶️</span>
+                    <h4>起動</h4>
+                    <p>解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。</p>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">4</div>
+                    <span class="step-icon start">🚀</span>
+                    <h4>利用開始</h4>
+                    <p>直感的なインターフェースで、すぐにエミュレーションを開始できます。</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="service-pricing">
-            <div class="price-info">
-              <span class="price-label">料金：</span>
-              <span class="price-value">無料</span>
+          <!-- Memory Booster（右） -->
+          <div class="service-block" style="flex: 1 1 0; min-width: 320px; max-width: 50%; box-sizing: border-box;">
+            <div class="service-header">
+              <div class="free-badge">Free</div>
+              <h3>Memory Booster</h3>
+              <p class="service-subtitle"><strong>仮想メモリをコントロールし、パフォーマンスを向上</strong></p>
             </div>
-          </div>
-          <div class="service-actions">
-            <a href="TimeGate.zip" class="download-btn primary" download>ダウンロード</a>
-            <a href="TimeGate_manual.pdf" class="download-btn secondary" download>PDFダウンロード</a>
-          </div>
-          <div class="service-details">
-            <div class="download-note">Windows 64Bit対応</div>
-            <div class="disclaimer">Time Gateは個人で作成したソフトウェアです。バグやエラー、クラッシュなどが発生する恐れがあります。</div>
-          </div>
-          <div class="usage-toggle">
-            <button class="toggle-btn" onclick="toggleUsage()">利用方法を表示 ▼</button>
-            <div class="usage-content">
-              <div class="usage-steps">
-                <div class="step">
-                  <div class="step-number">1</div>
-                  <span class="step-icon download">📥</span>
-                  <h4>ダウンロード</h4>
-                  <p>上記の「ダウンロード」ボタンからTimeGate.zipをダウンロードしてください。</p>
+            <div class="service-features">
+              <div class="feature-grid">
+                <div class="feature-item">
+                  <div class="feature-icon innovation">🧠</div>
+                  <div class="feature-text">ワンクリックで仮想メモリを割り当て</div>
                 </div>
-                <div class="step">
-                  <div class="step-number">2</div>
-                  <span class="step-icon extract">📁</span>
-                  <h4>解凍</h4>
-                  <p>ダウンロードしたzipファイルを任意のフォルダに解凍してください。</p>
+                <div class="feature-item">
+                  <div class="feature-icon safety">🛡️</div>
+                  <div class="feature-text">仮想メモリの使用量を見れるモニタリング機能</div>
                 </div>
-                <div class="step">
-                  <div class="step-number">3</div>
-                  <span class="step-icon launch">▶️</span>
-                  <h4>起動</h4>
-                  <p>解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。</p>
+                <div class="feature-item">
+                  <div class="feature-icon rotate">🔄</div>
+                  <div class="feature-text">AIが仮想メモリを最適化する独自技術AI Tuning機能</div>
                 </div>
-                <div class="step">
-                  <div class="step-number">4</div>
-                  <span class="step-icon start">🚀</span>
-                  <h4>利用開始</h4>
-                  <p>直感的なインターフェースで、すぐにエミュレーションを開始できます。</p>
+                <div class="feature-item">
+                  <div class="feature-icon tap">👆</div>
+                  <div class="feature-text">直感的なインターフェイス</div>
+                </div>
+              </div>
+            </div>
+            <div class="service-pricing">
+              <div class="price-info">
+                <span class="price-label">料金：</span>
+                <span class="price-value">無料</span>
+              </div>
+            </div>
+            <div class="service-actions">
+              <a href="MemoryBooster.zip" class="download-btn primary" download>ダウンロード</a>
+              <a href="#" class="download-btn secondary" download>PDFダウンロード</a>
+            </div>
+            <div class="service-details">
+              <div class="download-note">Windows 64Bit対応</div>
+              <div class="disclaimer">Memory Boosterは個人で作成した無料ツールです。ご利用は自己責任でお願いします。</div>
+            </div>
+            <div class="usage-toggle">
+              <button class="toggle-btn" onclick="toggleUsage(this)">利用方法を表示 ▼</button>
+              <div class="usage-content">
+                <div class="usage-steps">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <span class="step-icon download">📥</span>
+                    <h4>ダウンロード</h4>
+                    <p>上記の「ダウンロード」ボタンからMemoryBooster.zipをダウンロードしてください。</p>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <span class="step-icon extract">📁</span>
+                    <h4>解凍</h4>
+                    <p>ダウンロードしたzipファイルを任意のフォルダに解凍してください。</p>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <span class="step-icon launch">▶️</span>
+                    <h4>起動</h4>
+                    <p>解凍したフォルダ内の実行ファイルをダブルクリックして起動してください。</p>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">4</div>
+                    <span class="step-icon start">🚀</span>
+                    <h4>利用開始</h4>
+                    <p>「最適化」ボタンを押すだけで、メモリの最適化が完了します。</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -243,40 +340,70 @@
         <div class="section-header">
           <h2>よくあるご質問</h2>
         </div>
+        <div class="faq-categories" style="margin-bottom:16px;">
+          <button class="faq-category-btn active" data-category="all">すべて</button>
+          <button class="faq-category-btn" data-category="account">アカウント</button>
+          <button class="faq-category-btn" data-category="service">サービス</button>
+          <button class="faq-category-btn" data-category="other">その他</button>
+        </div>
         <div class="faq-list">
-          <div class="faq-item">
+          <div class="faq-item" data-category="account">
             <button class="faq-question"><span class="faq-icon">💡</span>Q. サポートはどのように受けられますか？</button>
             <div class="faq-answer">A. お問い合わせフォームで無料でお問い合わせできます。</div>
           </div>
-          <div class="faq-item">
+          <div class="faq-item" data-category="service">
             <button class="faq-question"><span class="faq-icon">💰</span>Q. 料金はいくらかかりますか？</button>
             <div class="faq-answer">A. すべてのサービスは無償で提供されています。登録などの必要がなく、手続きなく無料でサービスを利用できます。</div>
           </div>
-          <div class="faq-item">
+          <div class="faq-item" data-category="service">
             <button class="faq-question"><span class="faq-icon">💻</span>Q. 対応OSは何ですか？</button>
             <div class="faq-answer">A. Windows 32Bit/64Bitに対応しています。その他のバージョンのOSでのサポートは提供できません。</div>
           </div>
-          <div class="faq-item">
+          <div class="faq-item" data-category="other">
             <button class="faq-question"><span class="faq-icon">🌐</span>Q. サーバーはどこにありますか？</button>
             <div class="faq-answer">A. サーバー1(Webサービス、Webページ用のレンタルサーバー)はシンガポールにあります。サーバー2(アプリケーションのサーバー)はアメリカにあります。どちらも高速ではありませんが、TakeSoft社のWebサービスを支えている2つのサーバーです。</div>
           </div>
-          <div class="faq-item">
+          <div class="faq-item" data-category="other">
             <button class="faq-question"><span class="faq-icon">⏰</span>Q. 返信にはどれくらい時間がかかりますか？</button>
             <div class="faq-answer">A. 通常1～2営業日以内にご返信いたします。</div>
           </div>
-          <div class="faq-item">
+          <div class="faq-item" data-category="other">
             <button class="faq-question"><span class="faq-icon">📱</span>Q. スマートフォンやタブレットでも利用できますか？</button>
             <div class="faq-answer">A. はい、レスポンシブデザインに対応しており、スマートフォンやタブレットでも快適にご利用いただけます。</div>
           </div>
-          <div class="faq-item">
+          <div class="faq-item" data-category="other">
             <button class="faq-question"><span class="faq-icon">🏢</span>Q. TakeSoftはどこの国の企業ですか？</button>
             <div class="faq-answer">A. TakeSoftは、日本の埼玉県にある企業です。営業者はすべて日本人で、すべてのサービスが日本向けに最適化されています。</div>
           </div>
-          <div class="faq-item">
+          <div class="faq-item" data-category="other">
             <button class="faq-question"><span class="faq-icon">📱</span>Q. 入力した個人情報はどのように扱われますか？</button>
             <div class="faq-answer">A. お問い合わせ内容や個人情報は厳重に管理し、第三者に提供することはありません。</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- お客様の声・レビュー投稿フォーム -->
+    <section id="review-form" class="review-form reveal">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>レビュー投稿</h2>
+        </div>
+        <form id="voiceReviewForm" style="max-width:400px;margin:auto;">
+          <input type="text" name="name" placeholder="お名前（匿名可）" style="width:100%;margin-bottom:8px;padding:8px;" required>
+          <textarea name="comment" placeholder="コメント" style="width:100%;margin-bottom:8px;padding:8px;" required></textarea>
+          <select name="rating" style="width:100%;margin-bottom:8px;padding:8px;" required>
+            <option value="">評価を選択</option>
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+          </select>
+          <button type="submit" style="width:100%;padding:8px 0;">投稿</button>
+        </form>
+        <div id="reviewMessage" style="text-align:center;margin-top:8px;"></div>
+        <div id="reviewList" class="voice-list" style="margin-top:24px;"></div>
       </div>
     </section>
 
@@ -424,10 +551,9 @@
     });
    
    // 利用方法の折りたたみ機能
-   function toggleUsage() {
-     const content = document.querySelector('.usage-content');
-     const btn = document.querySelector('.toggle-btn');
-     const steps = document.querySelectorAll('.step');
+   function toggleUsage(btn) {
+     const content = btn.nextElementSibling;
+     const steps = content.querySelectorAll('.step');
      
      if (content.classList.contains('show')) {
        content.classList.remove('show');
@@ -745,6 +871,76 @@
        item.classList.add('active');
      });
    });
+
+   // FAQカテゴリ切り替え
+   document.querySelectorAll('.faq-category-btn').forEach(btn => {
+     btn.addEventListener('click', function() {
+       document.querySelectorAll('.faq-category-btn').forEach(b => b.classList.remove('active'));
+       this.classList.add('active');
+       const cat = this.getAttribute('data-category');
+       document.querySelectorAll('.faq-item').forEach(item => {
+         if(cat === 'all' || item.getAttribute('data-category') === cat) {
+           item.style.display = '';
+         } else {
+           item.style.display = 'none';
+         }
+       });
+     });
+   });
+
+    // レビュー投稿機能
+    const reviewForm = document.getElementById('voiceReviewForm');
+    const reviewList = document.getElementById('reviewList');
+    const reviewMessage = document.getElementById('reviewMessage');
+    function renderReviews() {
+      fetch('/api/review')
+        .then(res => res.json())
+        .then(reviews => {
+          reviewList.innerHTML = reviews.map(r => `
+            <div class="voice-item">
+              <div class="voice-header">
+                <span class="voice-customer">${r.name ? 'お名前: '+r.name : 'お名前: 匿名'}</span>
+                <span class="voice-service">評価: ${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>
+              </div>
+              <div class="voice-comment"><p>${r.comment}</p></div>
+            </div>
+          `).join('');
+        });
+    }
+    reviewForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(reviewForm);
+      const name = formData.get('name').trim() || '匿名';
+      const comment = formData.get('comment').trim();
+      const rating = parseInt(formData.get('rating'));
+      if(!comment || !rating) {
+        reviewMessage.textContent = 'コメントと評価は必須です。';
+        reviewMessage.style.color = '#d33';
+        return;
+      }
+      fetch('/api/review', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, comment, rating})
+      })
+      .then(res => res.json())
+      .then(result => {
+        if(result.success) {
+          reviewMessage.textContent = 'レビューを投稿しました。';
+          reviewMessage.style.color = '#0078d4';
+          reviewForm.reset();
+          renderReviews();
+        } else {
+          reviewMessage.textContent = result.message || '投稿に失敗しました。';
+          reviewMessage.style.color = '#d33';
+        }
+      })
+      .catch(() => {
+        reviewMessage.textContent = '通信エラーが発生しました。';
+        reviewMessage.style.color = '#d33';
+      });
+    });
+    renderReviews();
 
    // ログイン状態管理
    function setLoggedIn(email) {
