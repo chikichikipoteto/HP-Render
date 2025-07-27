@@ -1272,15 +1272,30 @@ main {
 
 /* フッター */
 footer {
-  background: #323130;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 75%, #1e3a8a 100%);
   color: #ffffff;
-  padding: 64px 0 32px 0;
+  padding: 80px 0 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  pointer-events: none;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-content {
@@ -1293,14 +1308,40 @@ footer {
 .footer-section h4 {
   color: #ffffff;
   margin: 0 0 24px 0;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 12px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.footer-section:hover h4::after {
+  width: 60px;
 }
 
 .footer-section p {
-  color: #c7c6c4;
-  line-height: 1.6;
+  color: #e0e7ff;
+  line-height: 1.8;
   margin: 0 0 24px 0;
+  font-size: 15px;
+  transition: color 0.3s ease;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.footer-section:hover p {
+  color: #ffffff;
 }
 
 .footer-section ul {
@@ -1310,33 +1351,113 @@ footer {
 }
 
 .footer-section li {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.footer-section li:hover {
+  transform: translateX(8px);
 }
 
 .footer-section a {
-  color: #c7c6c4;
+  color: #cbd5e1;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  position: relative;
+  padding: 8px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
 }
+
+.footer-section a::before {
+  content: '→';
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  color: #60a5fa;
+  font-weight: bold;
+}
+
 .footer-section a:hover {
   color: #ffffff;
+  text-shadow: 0 0 8px rgba(96, 165, 250, 0.5), 0 4px 8px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.footer-section a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .footer-logo-img {
-  height: 32px;
+  height: 40px;
   width: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.footer-logo-img:hover {
+  transform: scale(1.05);
 }
 
 .footer-bottom {
-  border-top: 1px solid #605e5c;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 32px;
   text-align: center;
+  position: relative;
+}
+
+.footer-bottom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #60a5fa, transparent);
 }
 
 .footer-bottom small {
-  color: #a19f9d;
+  color: #94a3b8;
   font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.footer-bottom:hover small {
+  color: #cbd5e1;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* フッターアニメーション */
+@keyframes footerGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
+}
+
+footer {
+  animation: footerGlow 4s ease-in-out infinite;
+}
+
+/* フッターアイコン */
+.footer-section h4::before {
+  content: '🚀';
+  margin-right: 8px;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.footer-section:nth-child(2) h4::before {
+  content: '⚡';
+}
+
+.footer-section:nth-child(3) h4::before {
+  content: '🏢';
 }
 
 /* スクロールアニメーション */
